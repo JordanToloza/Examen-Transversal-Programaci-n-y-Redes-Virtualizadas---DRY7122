@@ -1,0 +1,12 @@
+---
+- name: Configurar interfaz Loopback 33 con IPv6
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: Aplicar configuraciones IPv6 a Loopback 33
+      cisco.ios.ios_config:
+        lines:
+          - interface Loopback33
+          - ipv6 address 3001:ABCD:ABCD:1::1/128
+          - ipv6 address FE80::1 link-local
+          - no shutdown
